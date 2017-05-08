@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import edu.co.sergio.mundo.vo.Departamento;
+import edu.co.sergio.mundo.vo.*;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,4 +153,47 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	   
 	   return result;
 	}
+        
+        public List<Proyecto> recursos() {
+		List<Proyecto> proyectos= null;
+                
+	    String query = "select nom_proy,Count(id_rec) as total from Proyecto left join Recurso using (id_proyecto) group by nom_proy;";
+	    Connection connection = null;
+           Proyecto d=null;
+            try {
+                connection = Conexion.getConnection();
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+	    try {
+	    Statement st = connection.createStatement();
+	    ResultSet rs = st.executeQuery(query);
+	    int id =0;
+	    int total = 0;
+            String nombre_pro=null;
+          
+                    
+	    while (rs.next()){
+	    	if(proyectos == null){
+	    		proyectos= new ArrayList<Proyecto>();
+	   	}
+	      
+	        nombre_pro = rs.getString("nom_proy");
+	       d.setName_proy(nombre_pro);
+                
+	        total = rs.getInt("total");
+	        d.setTotal(total) ;
+	       
+	        proyectos.add(d);
+	    }
+	    st.close();
+	    
+	    } catch (SQLException e) {
+			System.out.println("Problemas al obtener la lista de Departamentos");
+			e.printStackTrace();
+		}
+	    
+	    return proyectos;
+	}
+
 }
