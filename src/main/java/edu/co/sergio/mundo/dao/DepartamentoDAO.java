@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import edu.co.sergio.mundo.vo.Proyecto;
 import edu.co.sergio.mundo.vo.*;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
@@ -168,7 +169,7 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	    try {
 	    Statement st = connection.createStatement();
 	    ResultSet rs = st.executeQuery(query);
-	    int id =0;
+	    
 	    int total = 0;
             String nombre_pro=null;
           

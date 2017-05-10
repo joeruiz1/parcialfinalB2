@@ -22,7 +22,7 @@ import edu.co.sergio.mundo.dao.DepartamentoDAO;
 
 public class ChartServlet extends HttpServlet {
 
-    DepartamentoDAO dep = new DepartamentoDAO();
+    
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -36,16 +36,20 @@ public class ChartServlet extends HttpServlet {
     }
 
     public JFreeChart getChart() {
-
+        DepartamentoDAO dep = new DepartamentoDAO();
         DefaultPieDataset dataset = new DefaultPieDataset();
         //Crear la capa de servicios que se enlace con el DAO
-        dep.recursos();
+        
         for (int i = 0; i < dep.recursos().size(); i++) {
 
-            dep.recursos().get(i).getName_proy();
-            dep.recursos().get(i).getTotal();
+          String nom=  dep.recursos().get(i).getName_proy();
+           int num= dep.recursos().get(i).getTotal();
+            
+            dataset.setValue(nom,num);
+            
         }
-
+        
+     
 //        dataset.setValue("Ford", 23.3);
 //        dataset.setValue("Chevy", 32.4);
 //        dataset.setValue("Yugo", 44.2);
