@@ -159,7 +159,7 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
     }
 
     public List<Proyecto> recursos() {
-        List<Proyecto> proyectos = null; 
+        List<Proyecto> proyectos = null;
 
         String query = "select nom_proy,Count(id_rec) as total from Proyecto left join Recurso using (id_proyecto) group by nom_proy;";
         Connection connection = null;
@@ -175,7 +175,7 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 
             int total = 0;
             String nombre_pro = null;
-
+            d = new Proyecto();
             while (rs.next()) {
                 if (proyectos == null) {
                     proyectos = new ArrayList<Proyecto>();
@@ -195,7 +195,6 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
             System.out.println("Problemas al obtener la lista de proyectos");
             e.printStackTrace();
         }
-
         return proyectos;
     }
 
