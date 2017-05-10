@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package edu.co.sergio.mundo.vo;
 
 /**
@@ -23,10 +20,6 @@ public class Proyecto {
         this.total = total;
     }
 
-    public Proyecto(int id_proy, String name_proy) {
-        this.id_proy = id_proy;
-        this.name_proy = name_proy;
-    }
 
     public int getId_proy() {
         return id_proy;
