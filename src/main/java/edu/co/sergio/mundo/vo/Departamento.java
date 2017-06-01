@@ -17,6 +17,4 @@ public class Departamento {
 		this.nom_departamento = nom_departamento;
 	}
 	
-	
-
 }

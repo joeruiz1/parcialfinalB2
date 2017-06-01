@@ -18,7 +18,18 @@ import java.util.logging.Logger;
  */
 public class CreateDataBase {
      public static void run(){
-          String sql = "CREATE TABLE Depto(id_depto integer,nom_depto varchar(40), PRIMARY KEY(id_depto))";
+          String sql = "create table visitaTecnica( \n" +
+"cantidad_colmena varchar(20),\n" +
+"calidad_Colmena varchar(20),\n" +
+"reinaColmena varchar(10),\n" +
+"Produccion_Miel varchar(10),\n" +
+"Panales_Cera Integer(10),\n" +
+"panales_Alimento integer(10),\n" +
+"panalesCria integer(20),\n" +
+"panalesVacios integer (15),\n" +
+"lugarColmena integer(10),\n" +
+"id_visita integer(10) primary key\n" +
+")";
           Connection connection = null;
             try {
                 connection = Conexion.getConnection();
