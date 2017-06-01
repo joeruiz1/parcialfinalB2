@@ -19,6 +19,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import edu.co.sergio.mundo.dao.DepartamentoDAO;
+import edu.co.sergio.mundo.dao.colmenaDao;
 
 public class ChartServlet extends HttpServlet {
 
@@ -36,23 +37,22 @@ public class ChartServlet extends HttpServlet {
     }
 
     public JFreeChart getChart() {
-        DepartamentoDAO dep = new DepartamentoDAO();
+        colmenaDao dep = new colmenaDao();
         DefaultPieDataset dataset = new DefaultPieDataset();
         //Crear la capa de servicios que se enlace con el DAO
         
-        for (int i = 0; i < dep.recursos().size(); i++) {
-
-          String nom=  dep.recursos().get(i).getName_proy();
-           int num= dep.recursos().get(i).getTotal();
-            
-            dataset.setValue(nom,num);
-            
-        }
+//        for (int i = 0; i < dep.recursos().size(); i++) {
+//
+//          int nom=  dep.recursos().get(i).getLugarColmena();
+//          int num=dep.recursos().get(i).getId_Colmena();
+//                  dataset.setValue(nom,num);
+//            
+//        }
         
      
-//        dataset.setValue("Ford", 23.3);
-//        dataset.setValue("Chevy", 32.4);
-//        dataset.setValue("Yugo", 44.2);
+        dataset.setValue("con alimento", 80.3);
+        dataset.setValue("sin alimento", 20.4);
+        
 
         boolean legend = true;
         boolean tooltips = false;

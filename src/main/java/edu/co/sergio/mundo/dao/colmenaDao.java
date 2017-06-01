@@ -161,10 +161,10 @@ public class colmenaDao  implements IBaseDatos<Colmena> {
             return result;
         }
 
-        public List<Colmena> recursos() {
-            List<Colmena> colmena = null;
+        public List<registro> recursos() {
+            List<registro> colmena = null;
 
-            Colmena d=null;
+            registro d=null;
             String query = "select panales_Alimento from visitaTecnica where id_Colmena = 1;";
             Connection connection = null;
            
@@ -177,16 +177,19 @@ public class colmenaDao  implements IBaseDatos<Colmena> {
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
-                d=new Colmena();
-                int total = 0;
+                d=new registro();
+                int id = 0;
                  int alimento = 0;
                 while (rs.next()) {
                     if (colmena == null) {
-                        colmena = new ArrayList<Colmena>();
+                        colmena = new ArrayList<registro>();
                     }
 
                     alimento = rs.getInt("panales_Alimento");
-                    d.setIdColmena(alimento);
+                    d.setPanales_Alimento(alimento);
+                    
+                    id=rs.getInt("id_Colmena");
+                    d.setId_Colmena(id);
                     
                     colmena.add(d);
                 }

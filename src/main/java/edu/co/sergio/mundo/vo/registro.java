@@ -17,6 +17,15 @@ private int panalesVacios;
 private int lugarColmena; 
 private int id_visita; 
 
+    public int getId_Colmena() {
+        return id_Colmena;
+    }
+
+    public void setId_Colmena(int id_Colmena) {
+        this.id_Colmena = id_Colmena;
+    }
+private int id_Colmena;
+
     public String getCantidad_colmena() {
         return cantidad_colmena;
     }
