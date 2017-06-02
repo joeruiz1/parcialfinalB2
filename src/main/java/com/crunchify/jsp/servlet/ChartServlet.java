@@ -41,7 +41,7 @@ public class ChartServlet extends HttpServlet {
         DefaultPieDataset dataset = new DefaultPieDataset();
         //Crear la capa de servicios que se enlace con el DAO
         
-//        for (int i = 0; i < dep.recursos().size(); i++) {
+       for (int i = 0; i < dep.recursos().size(); i++) {
 //
 //          int nom=  dep.recursos().get(i).getLugarColmena();
 //          int num=dep.recursos().get(i).getId_Colmena();
@@ -50,10 +50,10 @@ public class ChartServlet extends HttpServlet {
 //        }
         
      
-        dataset.setValue("con alimento", 80.3);
-        dataset.setValue("sin alimento", 20.4);
+        dataset.setValue("con alimento",dep.recursos().get(i).getPanales_Alimento());
+        dataset.setValue("sin alimento", dep.recursos().get(i).getId_Colmena());
         
-
+       }
         boolean legend = true;
         boolean tooltips = false;
         boolean urls = false;
@@ -66,5 +66,5 @@ public class ChartServlet extends HttpServlet {
 
         return chart;
     }
-
-}
+    
+    }
